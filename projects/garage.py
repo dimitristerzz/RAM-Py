@@ -124,16 +124,17 @@ def logic():
     global balance
     if balance >= list(cars.values())[choice - 1]:
         print(f"\nObtained \"{list(cars.keys())[choice - 1]}\" for {list(cars.values())[choice - 1]:,}$!")
-        balance = balance - int(list(cars.values())[choice - 1])
-        print(f"\nNew balance: {balance:,}$")
-        ownedCars.append(list(cars.keys())[choice - 1])
-        cars.pop(list(cars.keys())[choice - 1])
-        print(f"\nOwned cars: {", ".join(ownedCars)}")
         for index, (value, key) in enumerate(cars.items(), start=1):
             if index == 1:
                 print(f"\nNew list: \n({index}) {value}: {key:,}$")
             else:
                 print(f"({index}) {value}: {key:,}$")
+        balance = balance - int(list(cars.values())[choice - 1])
+        print(f"\nNew balance: {balance:,}$")
+        ownedCars.append(list(cars.keys())[choice - 1])
+        cars.pop(list(cars.keys())[choice - 1])
+        print(f"\nOwned cars: {", ".join(ownedCars)}")
+        
     else:
         print("Insufficient balance, please select another car by typing the number displayed next to it: ")
 
